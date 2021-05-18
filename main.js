@@ -26,20 +26,14 @@ client.on('message', message =>{
     const args = message.content.slice(prefix.length).split(/ +/);
     const command = args.shift().toLowerCase();
 
-    if(command === 'units'){
-        message.channel.send('Which kind of information on units you want to know ?')
-        message.channel.send('1. stats')
-        message.channel.send('2. jobs')
-        message.channel.send('3. abilities')
-    }
-    else if(command === 'help'){
-        message.channel.send('Seems like you need my help, I can help you in these categories, just type -(name you want to search on lowercase and no space) to access my database)')
-        message.channel.send('For example: Units: ustats')
+        if(command === 'help'){
+        message.channel.send('Seems like you need my help, I can help you in these categories, just type -(name you want to search on lowercase and no space) to access my database')
         message.channel.send('1. units')
-        message.channel.send('- ustats | -ujobs | -uabilities')
+        message.channel.send('-ustats | -ujobs | -uabilities')
         message.channel.send('2. vision cards')
-        message.channel.send('- vcstats | vceffects | -vcenhance | -vcawaken')
+        message.channel.send('-vcbasics | -vceffects | -vcenhance | -vcawaken')
         message.channel.send('3. equipment')
+        message.channel.send(' -eqinfo | -eqstats | -eq | -eq ')
         message.channel.send('4. espers')
         message.channel.send('5. summons')
         message.channel.send('6. guilds')
@@ -66,9 +60,6 @@ client.on('message', message =>{
     }
     else if(command === 'uabilities'){
         client.commands.get('uabilities').execute(message, args);
-    }
-    else if(command === 'status'){
-        client.commands.get('status').execute(message, args);
     }
 });
 client.on('message', message =>{
@@ -124,10 +115,7 @@ client.on('message', message =>{
     const args = message.content.slice(prefix.length).split(/ +/);
     const command = args.shift().toLowerCase();
 
-    if(command === 'equipment'){
-        client.commands.get('equipment').execute(message, args);
-    }
-    else if(command === 'vcenhance'){
+    if(command === 'vcenhance'){
         message.channel.send('- Enhancing vision cards will increase stats/party ability/bestowed and limited bestowed effects that the VC provided and there is a chance when enhancing, a success will occur and increase efficency of exp')
         message.channel.send('- Last effect line of Party Ability will be unlock when the cards reached its max LVL ')
         message.channel.send('- Some vision card will have its unique vision ability')
@@ -137,25 +125,61 @@ client.on('message', message =>{
         message.channel.send('- Awakening vision cards will increase LVL limit of the card, fully awaken will increase to 99')
         message.channel.send('- 275 vision card shards is needed to fully awaken (25-50-75-125)')
     }
-    else if(command === 'vcstats'){
+    else if(command === 'vceffects'){
+        message.channel.send('This will take awhile to process all so be patient!')
         message.channel.send('- Vision Cards base stats will be applied to the Unit its equipped to')
-        message.channel.send('Here is some explanation of some stats effects:')
-        message.channel.send('- RES(Resistance): Resist a portion of damage')
-        message.channel.send('For example: Solidus VC: Slash Attack Res Up: Decrease incoming Slash DMG ')
-        message.channel.send('Unit Attack Res Up: Increase RES of incoming single-target ability')
-        message.channel.send('For example: Bahamut VC: Unit Attack Res Up: Increase RES of single-target ability')
-        message.channel.send('- Element Attack Up: Increase damage to ALL abilities that shares the same element including physical and magical abilities')
-        message.channel.send('For example: Ifrit VC: Fire attack up (Bestowed Effects) will increase equipped unit all fire ability damage')
-        message.channel.send('- Element Attack RES Up: Increase RES of ALL abilities that shares the same element including physical and magical abilities ')
-        message.channel.send('For example: Downtime VC: Ice Attack Res Up: Increase RES of Ice element abilities')
-        message.channel.send('- Area Attack Res Up: Increase RES of ALL Area Attack')
-        message.channel.send('- Piercing Rate UP: Increase penetration on certain RES/DEF')
-        message.channel.send('For example: + Flash of Insight VC: Slash Attack Res Piercing Rate Up: Increase penetration of Slash ATK on Slash Res')
-        message.channel.send('- Damage Limit Up: Increase maximum damage dealt')
+        message.channel.send('Here is some explanation of some effects of a VC:')
+        message.channel.send('- ATK%/MAG%/Dex%/Agi%/Luck%/ACC increases the specific stats of a Unit by a %')
+        message.channel.send('- Elemental ATK mods ~ increases the damage of elemental attacks by X')
+        message.channel.send('Example: Diabolos increases Dark ATK of allied Units by 35')
+        message.channel.send('- ATK type mods ~ increase the damage of specific type attacks of Units by X')
+        message.channel.send('Example: Echoing Screams increases Slash ATK of allied Units by 35')
+        message.channel.send('- Elemental RES mods ~ reduces the damage taken from certain elemental attacks by X')
+        message.channel.send('Example: Golem increases the Lightning RES of allied Earth units by 20% ')
+        message.channel.send('- ATK type RES ~  reduces the damage taken from specific atks by X')
+        message.channel.send('Example: Solidus increases the Slash RES of allies by 20%')
+        message.channel.send('- Critrate/Critdamage ~ increases the critrate/crit damage of Units by X')
+        message.channel.send('- Evasion/Critevasion ~ increases the evasion/critevasion of Units by X')
+        message.channel.send('- Single Target RES ~ reduces the damage taken from single target atks by X')
         message.channel.send('Note: On default, maximum damage dealt is 9999, this effect will expand the limit')
-        message.channel.send('Note: Usually in a party effect, it will display following this order')
-        message.channel.send('[Units Benefit] - [Elements/Stats/Attack/Attack-type/Res/Piercing/Critical Hit Rate/Evasion/Max HP/Accuracy... + [RES]] - [UP/Down] - [Index]')
-        message.channel.send('For example: + Golem VC: Earth Unit Lightning Attack Res Up 0: Earth Unit will increase RES on Lightning Attack')
-        message.channel.send('+ Echoing Screams VC: Slash Attack Up 16: Increase Slash ATK')
+        message.channel.send('Example: Odin increases single target res of allies by 20')
+        message.channel.send('- Area RES ~ reduces damage taken from AOE attacks')
+        message.channel.send('Example: Bloody Moon increases Area RES by 15')
+        message.channel.send('- Elemental Killer ~ increases damage dealt against unit of a specific element')
+        message.channel.send('Example: Chivalrous Outlaws, «Rubeus» increases allied Ice killer by 15')
+        message.channel.send('- Unit Type Killer ~ increases damage dealt against unit with a specific type')
+        message.channel.send('Example: Odin increases the Equipped Units Man eater by 10')
+        message.channel.send('- AP acquired UP ~ increases the AP gained by using TP skills/basic attacking by X')
+        message.channel.send('Example: Clairvoyant Astrologer increases AP Acquired by 35%')
+        message.channel.send('- AP UP ~ increases the initial AP of a Unit by X')
+        message.channel.send('- ATK type Pen ~ ignores a % of the enemys ATK type RES')
+        message.channel.send('Example: Exorcists increases allies Slash RES penetration by 35')
+        message.channel.send('- Defense/Spirit Pen ~ Ignores a part of the enemys def/spr')
+        message.channel.send('- Damage Limit UP ~ increases the Damage cap of Units [default dmg cap is 9999')
+    }
+    else if(command === 'status'){
+        client.commands.get('status').execute(message, args);
+    }
+    else if(command === 'vcbasics'){
+        client.commands.get('vcbasics').execute(message, args);
+    }
+});
+
+client.on('message', message =>{
+    if(!message.content.startsWith(prefix) || message.author.bot ) return;
+
+    const args = message.content.slice(prefix.length).split(/ +/);
+    const command = args.shift().toLowerCase();
+
+    if(command === 'eqinfo'){
+        message.channel.send('1. What is equipment?') 
+        message.channel.send('- Equipment is divided into 3 categories: weapons, armor, and accessories. A unit that equips them gains additional stats, effects, and abilities. Weapons, armor, and accessories can be enhanced by leveling, awakening, and crafting to add "+"')
+        message.channel.send('2. What is "+" symbolize for?')
+        message.channel.send('- By crafting ')
+
+
+    }
+    else if(command === 'eqstats'){
+
     }
 });
