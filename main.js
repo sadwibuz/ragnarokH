@@ -99,4 +99,7 @@ client.on('message', message =>{
     if(command === 'visioncards'){
         client.commands.get('visioncards').execute(message, args);
     }
+    else if(command === 'equipment'){
+        client.commands.get('equipment)').execute(message, args);
+    }
 });

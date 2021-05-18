@@ -2,6 +2,7 @@ module.exports = {
     name:'visioncards',
     description: 'this is a vision card commands!',
     execute(message, args){
+        message.channel.send('* Stats/Effects:')
         message.channel.send('- Vision card stats shares the same with units stats ')
         message.channel.send('- Each vision card will have 2 section when it comes to buff/debuff, Party Ability where it can be applied for all units within party and Bestowed Effects applies specifically for equippend unit only')
         message.channel.send('- Red words line on Party Ability on a vision card specify only a certain units in party benefit from the effect while white words effect will apply to all units within Party')
@@ -29,6 +30,12 @@ module.exports = {
         message.channel.send('For example: + Golem VC: Earth Unit Lightning Attack Res Up 0: Earth Unit will increase RES on Lightning Attack')
         message.channel.send('+ Suteki Da Ne( Tidus )VC: Water Unit Slash Attack UP: Increase Slash Attack of Water units')
         message.channel.send('+ Suteki Da Ne( Tidus )VC: Water Unit Critical Hit Rate UP: Increase critical hit of Water unit')
-
+        message.channel.send('*Enhance/Awaken:')
+        message.channel.send('- Enhancing vision cards will increase stats/party ability/bestowed and limited bestowed effects that the VC provided and there is a chance when enhancing, a success will occur and increase efficency of exp')
+        message.channel.send('- Last effect line of Party Ability will be unlock when the cards reached its max LVL ')
+        message.channel.send('- Awakening vision cards will increase LVL limit of the card, fully awaken will increase to 99')
+        message.channel.send('- 275 vision card shards is needed to fully awaken (25-50-75-125)')
+        message.channel.send('- Some vision card will have its unique vision ability')
+        message.channel.send('- For example: Clairvoyant Astrologer VC: Armor Piercer')
     }
 }
