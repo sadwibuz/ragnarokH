@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client ();
-const token = 'ODQzNjc4MTUwOTUyODc4MDgw.YKHWgQ.AlVsJ5Oo5ySouNeGHjiCdOrruD0';
+const token = 'ODQzNjc4MTUwOTUyODc4MDgw.YKHWgQ.4RypAzNBgInEi4X7mEusV8EPXdQ';
 client.login(token);
 
 const prefix = '-';
@@ -141,7 +141,6 @@ client.on('message', message =>{
         message.channel.send('- Critrate/Critdamage ~ increases the critrate/crit damage of Units by X')
         message.channel.send('- Evasion/Critevasion ~ increases the evasion/critevasion of Units by X')
         message.channel.send('- Single Target RES ~ reduces the damage taken from single target atks by X')
-        message.channel.send('Note: On default, maximum damage dealt is 9999, this effect will expand the limit')
         message.channel.send('Example: Odin increases single target res of allies by 20')
         message.channel.send('- Area RES ~ reduces damage taken from AOE attacks')
         message.channel.send('Example: Bloody Moon increases Area RES by 15')
@@ -155,7 +154,7 @@ client.on('message', message =>{
         message.channel.send('- ATK type Pen ~ ignores a % of the enemys ATK type RES')
         message.channel.send('Example: Exorcists increases allies Slash RES penetration by 35')
         message.channel.send('- Defense/Spirit Pen ~ Ignores a part of the enemys def/spr')
-        message.channel.send('- Damage Limit UP ~ increases the Damage cap of Units [default dmg cap is 9999')
+        message.channel.send('- Damage Limit UP ~ increases the Damage cap of Units [default dmg cap is 9999]')
     }
     else if(command === 'status'){
         client.commands.get('status').execute(message, args);
