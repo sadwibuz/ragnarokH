@@ -1,5 +1,5 @@
 module.exports = {
-    name: 'stats',
+    name: 'ustats',
     description: "this is a stats command from units!",
     execute(message, args){
             message.channel.send('This will take awhile to process all so be patient!')

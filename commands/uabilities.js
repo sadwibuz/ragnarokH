@@ -1,6 +1,6 @@
 
 module.exports = {
-    name:'abilities',
+    name:'uabilities',
     description: 'this is a abilities command from units!',
     execute(message, args){
         message.channel.send('- Each jobs will have its own distinctive abilities that other jobs dont have and by enhancing its level using JP, it will allows you to increase damage dealt, increase ability effects such as cheers or boost rates at which you can inflict status ailments on enemies.')
